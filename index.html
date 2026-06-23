@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hrithik Roshan Sureshkumar — Portfolio</title>
+
+<meta name="description" content="Hrithik Roshan Sureshkumar — MCA Graduate, Web Developer & Front-End Developer. Skilled in WordPress, HTML, CSS, JavaScript, React.js. Available for freelance work.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hrithikroshan0301-git.github.io/hrithik-portfolio/">
+<meta property="og:title" content="Hrithik Roshan Sureshkumar — Web Developer Portfolio">
+<meta property="og:description" content="MCA Graduate, Web Developer & Front-End Developer. Skilled in WordPress, HTML, CSS, JavaScript, React.js. Available for freelance work.">
+<meta property="og:image" content="https://hrithikroshan0301-git.github.io/hrithik-portfolio/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hrithik Roshan Sureshkumar — Web Developer Portfolio">
+<meta name="twitter:description" content="MCA Graduate, Web Developer & Front-End Developer. Skilled in WordPress, HTML, CSS, JavaScript, React.js.">
+<meta name="twitter:image" content="https://hrithikroshan0301-git.github.io/hrithik-portfolio/preview.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='55' font-weight='bold' text-anchor='middle' fill='%23ffd400' font-family='Arial'%3EHR%3C/text%3E%3C/svg%3E">
+
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -78,13 +96,13 @@
   }
   nav ul {
     display: flex;
-    gap: 28px;
+    gap: 26px;
     list-style: none;
   }
   nav a {
     color: var(--text-dim);
     text-decoration: none;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 500;
     transition: color 0.25s;
   }
@@ -101,10 +119,17 @@
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     padding-top: 100px;
   }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-text { display: flex; flex-direction: column; min-width: 0; }
   .hero .tag {
     display: inline-block;
     padding: 6px 16px;
@@ -112,7 +137,7 @@
     border-radius: 30px;
     font-size: 0.85rem;
     color: var(--accent);
-    background: rgba(124,92,255,0.08);
+    background: rgba(255,212,0,0.08);
     margin-bottom: 24px;
     width: fit-content;
     animation: fadeUp 0.8s ease both;
@@ -175,6 +200,72 @@
     background: transparent;
   }
   .btn-ghost:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+
+  /* CODE EDITOR VISUAL */
+  .code-editor {
+    background: #0d0d10;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(255,212,0,0.08);
+    animation: fadeUp 0.8s ease 0.3s both, floatCard 6s ease-in-out infinite;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .editor-bar {
+    background: #181820;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .editor-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .editor-dot.red { background: #ff5f56; }
+  .editor-dot.yellow { background: #ffbd2e; }
+  .editor-dot.green { background: #27c93f; }
+  .editor-filename {
+    margin-left: 10px;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-family: monospace;
+  }
+  .editor-body {
+    padding: 22px 20px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.82rem;
+    line-height: 1.85;
+    min-height: 280px;
+  }
+  .editor-line { display: flex; gap: 14px; }
+  .line-num { color: #444; user-select: none; min-width: 16px; text-align: right; }
+  .code-text { white-space: pre-wrap; }
+  .c-key { color: #ff7ab2; }
+  .c-tag { color: var(--accent); }
+  .c-str { color: #8be9a4; }
+  .c-fn { color: #6fb6ff; }
+  .c-cm { color: #6a6a72; }
+  .c-var { color: #f5f5f0; }
+  .cursor-blink {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: var(--accent);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .hero-text { width: 100%; }
+    .code-editor { max-width: 100%; width: 100%; order: -1; margin-bottom: 10px; }
+  }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -263,7 +354,7 @@
   .timeline-header .date {
     font-size: 0.82rem;
     color: var(--accent);
-    background: rgba(124,92,255,0.1);
+    background: rgba(255,212,0,0.1);
     padding: 4px 12px;
     border-radius: 20px;
     white-space: nowrap;
@@ -290,7 +381,7 @@
   .skill-card:hover {
     transform: translateY(-6px) scale(1.03);
     border-color: var(--accent);
-    background: rgba(124,92,255,0.08);
+    background: rgba(255,212,0,0.08);
   }
   .skill-card .icon { font-size: 1.6rem; margin-bottom: 8px; }
   .skill-card .name { font-weight: 600; font-size: 0.88rem; }
@@ -320,6 +411,108 @@
     font-weight: 600;
   }
 
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px 26px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+  }
+  .service-card .s-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .service-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .service-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+  .service-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-card ul li {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .service-card ul li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .services-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .services-cta p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px 26px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+  }
+  .service-card .s-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+  .service-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .service-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+  .service-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-card ul li {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .service-card ul li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .services-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .services-cta p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+
   /* PROJECTS */
   .projects-grid {
     display: grid;
@@ -336,7 +529,7 @@
   .project-card:hover { transform: translateY(-8px); border-color: var(--accent); }
   .project-thumb {
     height: 140px;
-    background: linear-gradient(135deg, rgba(124,92,255,0.25), rgba(255,92,156,0.2));
+    background: linear-gradient(135deg, rgba(255,212,0,0.25), rgba(255,168,0,0.2));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -361,9 +554,9 @@
     font-size: 0.72rem;
     padding: 4px 10px;
     border-radius: 20px;
-    background: rgba(124,92,255,0.12);
+    background: rgba(255,212,0,0.12);
     color: var(--accent);
-    border: 1px solid rgba(124,92,255,0.25);
+    border: 1px solid rgba(255,212,0,0.25);
   }
 
   /* EDUCATION + CERTS */
@@ -421,7 +614,7 @@
   .connect-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent);
-    background: rgba(124,92,255,0.08);
+    background: rgba(255,212,0,0.08);
   }
   .connect-card .ic {
     width: 46px; height: 46px;
@@ -493,7 +686,7 @@
   }
 
   @media (max-width: 768px) {
-    nav ul { gap: 14px; }
+    nav ul { gap: 12px; }
     nav ul li:nth-child(n+4) { display: none; }
     .about-grid, .edu-grid { grid-template-columns: 1fr; }
   }
@@ -510,6 +703,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#connect">Connect</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -522,7 +716,7 @@
   <p class="role">MCA Graduate · Web Developer · Front-End Developer</p>
   <p class="desc">
     Detail-oriented developer with hands-on experience in WordPress, HTML, CSS, JavaScript, and React.js.
-    I build responsive, user-friendly websites and love turning ideas into clean, functional interfaces -
+    I build responsive, user-friendly websites and love turning ideas into clean, functional interfaces —
     currently working as a Web Developer in Coimbatore, Tamil Nadu.
   </p>
   <div class="hero-btns">
@@ -536,8 +730,8 @@
   <div class="section-title">A little about my journey</div>
   <div class="about-grid">
     <div class="about-card">
-      <p>I'm a highly enthused and detail-oriented MCA graduate with strong organizational and problem-solving skills. I completed a Front-End Developer internship and am currently working as a Web Design Intern, gaining hands-on experience in WordPress, HTML and CSS.</p>
-      <p>I'm experienced in designing responsive, user-friendly websites, customizing themes and managing website content - and I'm actively seeking a full-time opportunity where I can contribute meaningfully while evolving as a web development professional.</p>
+      <p>I'm a highly enthused and detail-oriented MCA graduate with strong organizational and problem-solving skills. I completed a Front-End Developer internship and am currently working as a Web Developer, gaining hands-on experience in WordPress, HTML, and CSS.</p>
+      <p>I'm experienced in designing responsive, user-friendly websites, customizing themes, and managing website content - and I'm actively seeking a full-time opportunity, along with freelance projects, where I can contribute meaningfully while evolving as a web development professional.</p>
     </div>
     <div class="stat-grid">
       <div class="stat"><div class="num">3</div><div class="label">Roles Held</div></div>
@@ -555,7 +749,7 @@
     <div class="timeline-item">
       <div class="timeline-header">
         <h3>Web Developer</h3>
-        <span class="date">Mar 2026 - Present</span>
+        <span class="date">Mar 2026 – Present</span>
       </div>
       <div class="company">Sportingindia Sports Tech Solutions Pvt Ltd · Coimbatore, Tamil Nadu · Full-time</div>
       <ul>
@@ -569,24 +763,24 @@
     <div class="timeline-item">
       <div class="timeline-header">
         <h3>Junior Web Designer</h3>
-        <span class="date">Oct 2025 - Mar 2026 · 6 mos</span>
+        <span class="date">Oct 2025 – Mar 2026 · 6 mos</span>
       </div>
       <div class="company">ProPlus Logics Solutions Pvt. Ltd · Coimbatore, Tamil Nadu · Full-time</div>
       <ul>
         <li>Worked as a Web Design Intern, developing and maintaining responsive WordPress websites.</li>
-        <li>Handled mobile and tablet optimization, theme customization, content updates and UI improvements.</li>
+        <li>Handled mobile and tablet optimization, theme customization, content updates, and UI improvements.</li>
         <li>Supported multiple live projects and independently developed websites while ensuring smooth functionality and client requirements implementation.</li>
       </ul>
     </div>
     <div class="timeline-item">
       <div class="timeline-header">
         <h3>Frontend Developer</h3>
-        <span class="date">Dec 2023 - Feb 2024 · 3 mos</span>
+        <span class="date">Dec 2023 – Feb 2024 · 3 mos</span>
       </div>
       <div class="company">PHA India Pvt. Ltd. · Chennai, Tamil Nadu · Internship</div>
       <ul>
-        <li>Developed and maintained web applications using HTML, CSS and JavaScript.</li>
-        <li>Designed user interface elements such as buttons, forms, menus and navigation bars.</li>
+        <li>Developed and maintained web applications using HTML, CSS, and JavaScript.</li>
+        <li>Designed user interface elements such as buttons, forms, menus, and navigation bars.</li>
         <li>Collaborated with other developers to design solutions for complex problems.</li>
         <li>Assisted in debugging and troubleshooting code issues to ensure optimal performance.</li>
         <li>Participated in code reviews to maintain code quality and consistency.</li>
@@ -628,6 +822,47 @@
   </div>
 </section>
 
+<section id="services">
+  <div class="section-label">Freelance Services</div>
+  <div class="section-title">What I Can Build For You</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="s-icon">🎨</div>
+      <h3>Website Design (WordPress)</h3>
+      <p>Custom, responsive WordPress websites tailored to your brand - built using themes, Elementor, and clean customization.</p>
+      <ul>
+        <li>Theme setup & customization</li>
+        <li>Responsive, mobile-first layouts</li>
+        <li>Content & page structuring</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="s-icon">💻</div>
+      <h3>Website Development (HTML/CSS/JS)</h3>
+      <p>Fast, lightweight static or interactive websites built from scratch using clean code - no bloated builders.</p>
+      <ul>
+        <li>Custom HTML5, CSS3, JavaScript builds</li>
+        <li>Cross-browser compatibility</li>
+        <li>Performance-focused pages</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="s-icon">🛠️</div>
+      <h3>Website Maintenance & Updates</h3>
+      <p>Ongoing support to keep your website running smoothly — updates, fixes, and content changes whenever you need them.</p>
+      <ul>
+        <li>Content & layout updates</li>
+        <li>Bug fixes & troubleshooting</li>
+        <li>Plugin & theme updates</li>
+      </ul>
+    </div>
+  </div>
+  <div class="services-cta">
+    <p>Have a project in mind? Let's talk about how I can help bring it to life.</p>
+    <a href="#contact" class="btn btn-primary">💬 Let's Discuss Your Project</a>
+  </div>
+</section>
+
 <section id="projects">
   <div class="section-label">My Work</div>
   <div class="section-title">Featured Projects</div>
@@ -636,7 +871,7 @@
       <div class="project-thumb">🪵<span class="live-badge">LIVE</span></div>
       <div class="project-body">
         <h3>Rajhans Plywood Website</h3>
-        <p>Designed and maintained the website for a wholesale plywood business, with structured product pages, theme customization and content management.</p>
+        <p>Designed and maintained the website for a wholesale plywood business, with structured product pages, theme customization, and content management.</p>
         <div class="project-tags">
           <span class="tag-chip">WordPress</span>
           <span class="tag-chip">HTML</span>
@@ -660,7 +895,7 @@
       <div class="project-thumb">🏡</div>
       <div class="project-body">
         <h3>Cozy Ranch Website</h3>
-        <p>Contributed in a support role - layout updates, content modifications, and basic design improvements for a responsive, user-friendly site.</p>
+        <p>Contributed in a support role — layout updates, content modifications, and basic design improvements for a responsive, user-friendly site.</p>
         <div class="project-tags">
           <span class="tag-chip">WordPress</span>
           <span class="tag-chip">HTML5</span>
@@ -690,19 +925,19 @@
     <div class="edu-card">
       <h3>Master of Computer Application (MCA)</h3>
       <div class="school">CMR University, Bengaluru, India</div>
-      <div class="date">Jan 2023 - Dec 2024</div>
+      <div class="date">Jan 2023 – Dec 2024</div>
     </div>
     <div class="edu-card">
       <h3>Bachelor of Computer Application (BCA)</h3>
       <div class="school">Bishop Heber College, Tiruchirappalli, India</div>
-      <div class="date">Jun 2019 - Jun 2022</div>
+      <div class="date">Jun 2019 – Jun 2022</div>
     </div>
   </div>
 
   <div class="cert-list">
     <div class="cert-item">
       <div class="cert-icon">🏅</div>
-      <div class="cert-text"><b>Full Stack Python Development</b><span>Besant Technologies · March 2025 - September 2025</span></div>
+      <div class="cert-text"><b>Full Stack Python Development</b><span>Besant Technologies · March 2025 – September 2025</span></div>
     </div>
     <div class="cert-item">
       <div class="cert-icon">🐍</div>
@@ -737,11 +972,11 @@
 <section id="contact">
   <div class="freelance-banner">
     <span class="dot"></span>
-    <span>Available for freelance work - open to short-term and project-based opportunities</span>
+    <span>Available for freelance work — open to short-term and project-based opportunities</span>
   </div>
   <div class="contact-box">
     <h2>Let's Work Together</h2>
-    <p>Looking for a full-time opportunity. Have a role in mind or just want to connect? My inbox is always open.</p>
+    <p>Looking for a full-time opportunity and freelance projects. Have a role in mind or just want to connect? My inbox is always open.</p>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hrithikroshan0301@gmail.com" target="_blank" class="btn btn-primary">✉️ hrithikroshan0301@gmail.com</a>
     <div class="contact-info">
       <span>📍 Coimbatore, Tamil Nadu</span>
