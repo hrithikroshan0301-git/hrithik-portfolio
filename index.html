@@ -456,6 +456,32 @@
     font-size: 0.9rem;
   }
 
+  .freelance-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255,212,0,0.1);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 24px;
+    margin-bottom: 30px;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .freelance-banner .dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+    flex-shrink: 0;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
   footer {
     text-align: center;
     padding: 30px;
@@ -491,7 +517,7 @@
 </nav>
 
 <section class="hero" id="home">
-  <div class="tag">👋 Currently a Web Developer @ Sporting India Tech</div>
+  <div class="tag">👋 Currently a Web Developer @ Sporting India Tech · Available for freelance work</div>
   <h1>Hi, I'm <span>Hrithik Roshan</span></h1>
   <p class="role">MCA Graduate · Web Developer · Front-End Developer</p>
   <p class="desc">
@@ -707,6 +733,10 @@
 </section>
 
 <section id="contact">
+  <div class="freelance-banner">
+    <span class="dot"></span>
+    <span>Available for freelance work — open to short-term and project-based opportunities</span>
+  </div>
   <div class="contact-box">
     <h2>Let's Work Together</h2>
     <p>Looking for a full-time opportunity. Have a role in mind or just want to connect? My inbox is always open.</p>
