@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hrithik Roshan Sureshkumar — Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg-card: #161616;
+    --accent: #ffd400;
+    --accent2: #ffa800;
+    --text: #f5f5f0;
+    --text-dim: #a3a399;
+    --border: rgba(255,212,0,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,212,0,0.18), transparent 70%);
+    top: -200px;
+    left: -200px;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 12s ease-in-out infinite;
+  }
+  .glow2 {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,168,0,0.14), transparent 70%);
+    bottom: -150px;
+    right: -150px;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 14s ease-in-out infinite reverse;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(40px, 60px); }
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 6%;
+    background: rgba(10,10,10,0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.25s;
+  }
+  nav a:hover { color: var(--text); }
+
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 130px 8% 90px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+  }
+  .hero .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: rgba(124,92,255,0.08);
+    margin-bottom: 24px;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6.5vw, 4.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.role {
+    font-size: clamp(1.05rem, 2.3vw, 1.4rem);
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero p.desc {
+    max-width: 600px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .btn {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    color: #0a0a0a;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(255,212,0,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,212,0,0.5); }
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 40px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 34px;
+  }
+  .about-card p {
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .stat:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .stat .num {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat .label { color: var(--text-dim); font-size: 0.85rem; margin-top: 6px; }
+
+  /* EXPERIENCE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .timeline-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 14px;
+    padding: 26px 28px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .timeline-item:hover { transform: translateX(6px); }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .timeline-header h3 { font-size: 1.1rem; }
+  .timeline-header .date {
+    font-size: 0.82rem;
+    color: var(--accent);
+    background: rgba(124,92,255,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    height: fit-content;
+  }
+  .timeline-item .company { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 12px; }
+  .timeline-item ul { padding-left: 18px; color: var(--text-dim); font-size: 0.92rem; line-height: 1.7; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  }
+  .skill-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--accent);
+    background: rgba(124,92,255,0.08);
+  }
+  .skill-card .icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .skill-card .name { font-weight: 600; font-size: 0.88rem; }
+
+  .soft-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .soft-chip {
+    padding: 10px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .soft-chip:hover { border-color: var(--accent); color: var(--text); }
+
+  .sub-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .project-card:hover { transform: translateY(-8px); border-color: var(--accent); }
+  .project-thumb {
+    height: 140px;
+    background: linear-gradient(135deg, rgba(124,92,255,0.25), rgba(255,92,156,0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    position: relative;
+  }
+  .live-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .project-body { padding: 22px; }
+  .project-body h3 { margin-bottom: 8px; font-size: 1.05rem; }
+  .project-body p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px; }
+  .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-chip {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(124,92,255,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(124,92,255,0.25);
+  }
+
+  /* EDUCATION + CERTS */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .edu-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+  .edu-card h3 { font-size: 1rem; margin-bottom: 4px; }
+  .edu-card .school { color: var(--accent); font-size: 0.88rem; margin-bottom: 6px; }
+  .edu-card .date { color: var(--text-dim); font-size: 0.82rem; }
+
+  .cert-list { display: flex; flex-direction: column; gap: 14px; margin-top: 40px; }
+  .cert-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .cert-item:hover { border-color: var(--accent); transform: translateX(6px); }
+  .cert-item .cert-icon { font-size: 1.3rem; }
+  .cert-item .cert-text b { display: block; font-size: 0.92rem; }
+  .cert-item .cert-text span { color: var(--text-dim); font-size: 0.8rem; }
+
+  /* CONNECT */
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .connect-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  }
+  .connect-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    background: rgba(124,92,255,0.08);
+  }
+  .connect-card .ic {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0a0a0a;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .connect-card .info b { display: block; font-size: 1rem; }
+  .connect-card .info span { color: var(--text-dim); font-size: 0.85rem; }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+  }
+  .contact-box h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: 14px; font-weight: 800; }
+  .contact-box p { color: var(--text-dim); margin-bottom: 28px; }
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    nav ul { gap: 14px; }
+    nav ul li:nth-child(n+4) { display: none; }
+    .about-grid, .edu-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<nav>
+  <div class="logo">HR</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#connect">Connect</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="tag">👋 Currently a Web Developer @ Sporting India Tech</div>
+  <h1>Hi, I'm <span>Hrithik Roshan</span></h1>
+  <p class="role">MCA Graduate · Web Developer · Front-End Developer</p>
+  <p class="desc">
+    Detail-oriented developer with hands-on experience in WordPress, HTML, CSS, JavaScript, and React.js.
+    I build responsive, user-friendly websites and love turning ideas into clean, functional interfaces —
+    currently working as a Web Developer in Coimbatore, Tamil Nadu.
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn btn-primary">📩 Get in Touch</a>
+    <a href="#projects" class="btn btn-ghost">View Work</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About Me</div>
+  <div class="section-title">A little about my journey</div>
+  <div class="about-grid">
+    <div class="about-card">
+      <p>I'm a highly enthused and detail-oriented MCA graduate with strong organizational and problem-solving skills. I completed a Front-End Developer internship and am currently working as a Web Design Intern, gaining hands-on experience in WordPress, HTML, and CSS.</p>
+      <p>I'm experienced in designing responsive, user-friendly websites, customizing themes, and managing website content — and I'm actively seeking a full-time opportunity where I can contribute meaningfully while evolving as a web development professional.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">3</div><div class="label">Roles Held</div></div>
+      <div class="stat"><div class="num">4+</div><div class="label">Live Projects</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Certifications</div></div>
+      <div class="stat"><div class="num">MCA</div><div class="label">Qualification</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Career So Far</div>
+  <div class="section-title">Work Experience</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <h3>Web Developer</h3>
+        <span class="date">Mar 2026 – Present</span>
+      </div>
+      <div class="company">Sportingindia Sports Tech Solutions Pvt Ltd · Coimbatore, Tamil Nadu · Full-time</div>
+      <ul>
+        <li>Worked as a Web Developer at Sporting India Tech.</li>
+        <li>Developed and customized WordPress websites for various projects, including sports-based platforms.</li>
+        <li>Created responsive web pages.</li>
+        <li>Improved website UI/UX and navigation for better user experience.</li>
+        <li>Assisted in building dynamic and user-friendly web solutions.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <h3>Junior Web Designer</h3>
+        <span class="date">Oct 2025 – Mar 2026 · 6 mos</span>
+      </div>
+      <div class="company">ProPlus Logics Solutions Pvt. Ltd · Coimbatore, Tamil Nadu · Full-time</div>
+      <ul>
+        <li>Worked as a Web Design Intern, developing and maintaining responsive WordPress websites.</li>
+        <li>Handled mobile and tablet optimization, theme customization, content updates, and UI improvements.</li>
+        <li>Supported multiple live projects and independently developed websites while ensuring smooth functionality and client requirements implementation.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <h3>Frontend Developer</h3>
+        <span class="date">Dec 2023 – Feb 2024 · 3 mos</span>
+      </div>
+      <div class="company">PHA India Pvt. Ltd. · Chennai, Tamil Nadu · Internship</div>
+      <ul>
+        <li>Developed and maintained web applications using HTML, CSS, and JavaScript.</li>
+        <li>Designed user interface elements such as buttons, forms, menus, and navigation bars.</li>
+        <li>Collaborated with other developers to design solutions for complex problems.</li>
+        <li>Assisted in debugging and troubleshooting code issues to ensure optimal performance.</li>
+        <li>Participated in code reviews to maintain code quality and consistency.</li>
+        <li>Engaged in daily stand-up meetings and contributed to sprint planning and retrospectives.</li>
+        <li>Implemented responsive design techniques to ensure applications worked seamlessly across various devices.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">What I Know</div>
+  <div class="section-title">Skills & Tools</div>
+
+  <div class="sub-label">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="icon">🌐</div><div class="name">WordPress</div></div>
+    <div class="skill-card"><div class="icon">📄</div><div class="name">HTML</div></div>
+    <div class="skill-card"><div class="icon">🎨</div><div class="name">CSS3</div></div>
+    <div class="skill-card"><div class="icon">⚡</div><div class="name">JavaScript</div></div>
+    <div class="skill-card"><div class="icon">🅱️</div><div class="name">Bootstrap 5</div></div>
+    <div class="skill-card"><div class="icon">🐍</div><div class="name">Python</div></div>
+    <div class="skill-card"><div class="icon">⚛️</div><div class="name">React.js</div></div>
+    <div class="skill-card"><div class="icon">💨</div><div class="name">Tailwind CSS</div></div>
+    <div class="skill-card"><div class="icon">🖥️</div><div class="name">VS Code</div></div>
+    <div class="skill-card"><div class="icon">🧩</div><div class="name">Elementor</div></div>
+    <div class="skill-card"><div class="icon">🗄️</div><div class="name">MySQL</div></div>
+    <div class="skill-card"><div class="icon">🐘</div><div class="name">PHP (Foundation)</div></div>
+  </div>
+
+  <div class="sub-label">Soft Skills</div>
+  <div class="soft-skills">
+    <div class="soft-chip">Excellent Communication</div>
+    <div class="soft-chip">Attention to Detail</div>
+    <div class="soft-chip">Problem-Solving Under Pressure</div>
+    <div class="soft-chip">Team & Independent Work</div>
+    <div class="soft-chip">Time & Priority Management</div>
+    <div class="soft-chip">Analytical Thinking</div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">My Work</div>
+  <div class="section-title">Featured Projects</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb">🪵<span class="live-badge">LIVE</span></div>
+      <div class="project-body">
+        <h3>Rajhans Plywood Website</h3>
+        <p>Designed and maintained the website for a wholesale plywood business, with structured product pages, theme customization, and content management.</p>
+        <div class="project-tags">
+          <span class="tag-chip">WordPress</span>
+          <span class="tag-chip">HTML</span>
+          <span class="tag-chip">CSS</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏭<span class="live-badge">LIVE</span></div>
+      <div class="project-body">
+        <h3>Ceyone Tech Website</h3>
+        <p>Deployed a fully responsive static website for an industrial engineering company, with structured and performance-focused pages.</p>
+        <div class="project-tags">
+          <span class="tag-chip">HTML5</span>
+          <span class="tag-chip">CSS3</span>
+          <span class="tag-chip">Bootstrap 5</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🏡</div>
+      <div class="project-body">
+        <h3>Cozy Ranch Website</h3>
+        <p>Contributed in a support role — layout updates, content modifications, and basic design improvements for a responsive, user-friendly site.</p>
+        <div class="project-tags">
+          <span class="tag-chip">WordPress</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🚗</div>
+      <div class="project-body">
+        <h3>Car Blogs Web Application</h3>
+        <p>Supported layout updates, content modifications, and design improvements to ensure a responsive, user-friendly blog experience.</p>
+        <div class="project-tags">
+          <span class="tag-chip">HTML</span>
+          <span class="tag-chip">CSS</span>
+          <span class="tag-chip">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label">Background</div>
+  <div class="section-title">Education & Certifications</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3>Master of Computer Application (MCA)</h3>
+      <div class="school">CMR University, Bengaluru, India</div>
+      <div class="date">Jan 2023 – Dec 2024</div>
+    </div>
+    <div class="edu-card">
+      <h3>Bachelor of Computer Application (BCA)</h3>
+      <div class="school">Bishop Heber College, Tiruchirappalli, India</div>
+      <div class="date">Jun 2019 – Jun 2022</div>
+    </div>
+  </div>
+
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-icon">🏅</div>
+      <div class="cert-text"><b>Full Stack Python Development</b><span>Besant Technologies · March 2025 – September 2025</span></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🐍</div>
+      <div class="cert-text"><b>Python Programming Certificate</b><span>Extazee Software Solution</span></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">💻</div>
+      <div class="cert-text"><b>C++ Programming Certification — First Class with Distinction</b><span>SUITS, Bharathidasan University</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="section-label">Let's Link Up</div>
+  <div class="section-title">Find Me Online</div>
+  <div class="connect-grid">
+    <a href="https://www.linkedin.com/in/hrithikroshans031201/" target="_blank" class="connect-card">
+      <div class="ic">in</div>
+      <div class="info"><b>LinkedIn</b><span>Connect professionally</span></div>
+    </a>
+    <a href="mailto:hrithikroshan0301@gmail.com" class="connect-card">
+      <div class="ic">✉️</div>
+      <div class="info"><b>Email</b><span>hrithikroshan0301@gmail.com</span></div>
+    </a>
+    <a href="tel:+919080936127" class="connect-card">
+      <div class="ic">📞</div>
+      <div class="info"><b>Phone</b><span>+91 90809 36127</span></div>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's Work Together</h2>
+    <p>Looking for a full-time opportunity. Have a role in mind or just want to connect? My inbox is always open.</p>
+    <a href="mailto:hrithikroshan0301@gmail.com" class="btn btn-primary">✉️ hrithikroshan0301@gmail.com</a>
+    <div class="contact-info">
+      <span>📍 Coimbatore, Tamil Nadu</span>
+      <span>📞 +91 90809 36127</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Hrithik Roshan Sureshkumar — Built with care.
+</footer>
+
+</body>
+</html>
